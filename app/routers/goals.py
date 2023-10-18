@@ -2,6 +2,7 @@ from uuid import UUID
 from fastapi import APIRouter
 
 router = APIRouter()
+goals = ["goal0", "goal1", "goal2", "goal3"]
 
 @router.get("/goals", tags=["goals"])
 async def get_goals():
@@ -9,9 +10,9 @@ async def get_goals():
     return []
 
 @router.get("/goals/{goal_id}", tags=["goals"])
-async def get_goal(goals_id: UUID):
+async def get_goal(goals_id: str):
     # Here we want to return goal that user whant's to see the details of
-    return []
+    return [goals[int(goals_id)]]
 
 @router.get("/goals/{username}", tags=["goals"])
 async def get_user_goals(username: str): 
