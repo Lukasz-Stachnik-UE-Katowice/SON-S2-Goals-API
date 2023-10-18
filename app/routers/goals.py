@@ -3,14 +3,16 @@ from fastapi import APIRouter
 from pydantic import BaseModel
 
 router = APIRouter()
+
+
 class Goal(BaseModel):
-    id: int
+    id: str
     due_date: str
     frequency: str
 
-a = Goal(id=0, due_date = "a", frequency = "aa")
 
-goals = [a, "goal1", "goal2", "goal3"]
+goals = [Goal(id="0", due_date="a", frequency="aa"), Goal(id="1", due_date="b", frequency="bb"), Goal(id="2", due_date="c", frequency="cc"), Goal(id="3", due_date="d", frequency="dd")]
+
 
 @router.get("/goals", tags=["goals"])
 async def get_goals():
@@ -20,7 +22,10 @@ async def get_goals():
 @router.get("/goals/{goal_id}", tags=["goals"])
 async def get_goal(goals_id: str):
     # Here we want to return goal that user whant's to see the details of
-    return [goals[int(goals_id)]]
+    for goal in goals:
+        if int(goal.id) == int(goals_id):
+            return [goal]
+    return [{"goal": "dupa nie ma takiego"}]
 
 @router.get("/goals/{username}", tags=["goals"])
 async def get_user_goals(username: str): 
