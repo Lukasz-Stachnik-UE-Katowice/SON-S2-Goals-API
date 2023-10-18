@@ -30,7 +30,8 @@ async def post_goal(goal): #Here we need to add goal model that is going to be c
 
 @router.put("/goals/{goal_id}", tags=["goals"])
 async def update_goal(goal_id: UUID, goal): 
-    # Here we want to update goal in the database and return only status
+    if lista == []:
+        return 404
     return 
 
 @router.delete("/goals/{goal_id}", tags=["goals"])
