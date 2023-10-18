@@ -1,8 +1,16 @@
 from uuid import UUID
 from fastapi import APIRouter
+from pydantic import BaseModel
 
 router = APIRouter()
-goals = ["goal0", "goal1", "goal2", "goal3"]
+class Goal(BaseModel):
+    id: int
+    due_date: str
+    frequency: str
+
+a = Goal(id=0, due_date = "a", frequency = "aa")
+
+goals = [a, "goal1", "goal2", "goal3"]
 
 @router.get("/goals", tags=["goals"])
 async def get_goals():
