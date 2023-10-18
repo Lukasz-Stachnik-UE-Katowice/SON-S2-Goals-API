@@ -1,11 +1,7 @@
 from uuid import UUID
 from fastapi import APIRouter
 from pydantic import BaseModel
-from datetime import datetime
-
-class Goal(BaseModel):
-    id: str
-    description: str
+from .klasa_goals import Goals
 
 router = APIRouter()
 list_of_goals = []  # Initialize an empty list to store the goals.
@@ -16,10 +12,12 @@ list_of_goals.extend([goal1, goal2])
 
 
 
+goals = [Goals(id="1",item="Obiekt")]
+
 @router.get("/goals", tags=["goals"])
-async def get_goals():
+async def get_goals() -> list[Goals]:
     # Here we want to return all goals in the database
-    return []
+    return goals
 
 
 @router.get("/goals/{goal_id}", tags=["goals"])
