@@ -11,7 +11,11 @@ class Goal(BaseModel):
     frequency: str
 
 
-goals = [Goal(id="0", due_date="a", frequency="aa"), Goal(id="1", due_date="b", frequency="bb"), Goal(id="2", due_date="c", frequency="cc"), Goal(id="3", due_date="d", frequency="dd")]
+goals = [Goal(id="0", due_date="a", frequency="aa"),
+         Goal(id="1", due_date="b", frequency="bb"),
+         Goal(id="2", due_date="c", frequency="cc"),
+         Goal(id="3", due_date="d", frequency="dd")
+         ]
 
 
 @router.get("/goals", tags=["goals"])
