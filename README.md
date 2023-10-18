@@ -1,4 +1,4 @@
-# Goals API Group 1 Stationary
+# Goals API Group 2 Stationary
 
 ## Description
 
