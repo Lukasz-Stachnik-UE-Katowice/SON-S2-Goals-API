@@ -32,6 +32,9 @@ async def post_goal(goal): #Here we need to add goal model that is going to be c
 async def update_goal(goal_id: UUID, goal): 
     if lista == []:
         return 404
+
+    #nowa zmienna
+    zmienna = ""
     return 
 
 @router.delete("/goals/{goal_id}", tags=["goals"])
