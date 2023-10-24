@@ -12,5 +12,5 @@ async def root():
 
 @app.post("/")
 async def post(goal: Goal):
-
-    return goal
+    zmienna = 0
+    return zmienna
