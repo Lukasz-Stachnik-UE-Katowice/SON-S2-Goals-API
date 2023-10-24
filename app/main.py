@@ -10,7 +10,3 @@ app.include_router(goals.router)
 async def root():
     return {"message": "Hello Students!"}
 
-@app.post("/")
-async def post(goal: Goal):
-    zmienna = 0
-    return zmienna
