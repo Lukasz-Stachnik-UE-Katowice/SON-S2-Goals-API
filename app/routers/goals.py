@@ -1,9 +1,10 @@
 from uuid import UUID
 from fastapi import APIRouter
-from pydantic import BaseModel
+from .models import Goal
 
 router = APIRouter()
 
+list = []
 
 @router.get("/goals", tags=["goals"])
 async def get_goals():
@@ -24,12 +25,10 @@ async def get_user_goals(username: str):
 
 
 @router.post("/goals", tags=["goals"])
-async def post_goal(goal):
-    class goal(BaseModel):
-        id: int
-        item: str
+async def post_goal(desc: str):
 
-    goal.append(goal)
+    
+    list.append(Goal(id = "1", item= desc))
     return {'message: "Goal has been added"'}
 
     # Here we need to add goal model that is going to be created https://fastapi.tiangolo.com/tutorial/body/
