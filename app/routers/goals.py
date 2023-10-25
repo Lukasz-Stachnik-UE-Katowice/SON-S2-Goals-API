@@ -1,11 +1,8 @@
 from uuid import UUID
 from fastapi import APIRouter
 from .klasa_goals import Goals
-
 router = APIRouter()
-
 goals = [Goals(id="1",item="Obiekt")]
-
 @router.get("/goals", tags=["goals"])
 async def get_goals() -> list[Goals]:
     # Here we want to return all goals in the database
