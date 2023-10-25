@@ -1,5 +1,5 @@
 from uuid import UUID
-from fastapi import APIRouter
+from fastapi import APIRouter, HTTPException
 from app.routers.models import Goal
 
 router = APIRouter()
@@ -22,7 +22,7 @@ async def get_goal(goals_id: str):
     for goal in goals:
         if goal.id == goals_id:
             return [goal]
-    return [{"goal": "404"}]
+    raise HTTPException(status_code=404, detail="Item not found")
 
 @router.get("/goals/{username}", tags=["goals"])
 async def get_user_goals(username: str): 
