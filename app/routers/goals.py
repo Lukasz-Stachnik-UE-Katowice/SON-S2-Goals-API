@@ -1,15 +1,8 @@
 from uuid import UUID
 from fastapi import APIRouter
-from pydantic import BaseModel
+from app.routers.models import Goal
 
 router = APIRouter()
-
-
-class Goal(BaseModel):
-    id: str
-    due_date: str
-    frequency: str
-
 
 goals = [Goal(id="0", due_date="a", frequency="aa"),
          Goal(id="1", due_date="b", frequency="bb"),
@@ -27,9 +20,9 @@ async def get_goals():
 async def get_goal(goals_id: str):
     # Here we want to return goal that user whant's to see the details of
     for goal in goals:
-        if int(goal.id) == int(goals_id):
+        if goal.id == goals_id:
             return [goal]
-    return [{"goal": "dupa nie ma takiego"}]
+    return [{"goal": "404"}]
 
 @router.get("/goals/{username}", tags=["goals"])
 async def get_user_goals(username: str): 
