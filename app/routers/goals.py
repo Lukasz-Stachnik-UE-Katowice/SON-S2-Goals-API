@@ -1,16 +1,8 @@
 from uuid import UUID
 from fastapi import APIRouter
-from pydantic import BaseModel
 from .klasa_goals import Goals
 
 router = APIRouter()
-list_of_goals = []  # Initialize an empty list to store the goals.
-
-goal1 = Goal(id="1", description="One glass of water every morning")
-goal2 = Goal(id="2", description="Night face routine")
-list_of_goals.extend([goal1, goal2])
-
-
 
 goals = [Goals(id="1",item="Obiekt")]
 
@@ -40,8 +32,8 @@ async def post_goal(
 
 
 @router.put("/goals/{goal_id}", tags=["goals"])
-async def update_goal(goal_id: str, update_goal: Goal):
-    for goal in list_of_goals:
+async def update_goal(goal_id: str, update_goal: Goals):
+    for goal in list:
         if goal.id == goal_id:
             goal.description = update_goal.description
             return {"message": "Goal updated successfully"}
