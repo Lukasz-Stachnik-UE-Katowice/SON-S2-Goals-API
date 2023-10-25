@@ -57,6 +57,6 @@ async def delete_goal(goal_id: UUID):
 
 
 @router.post("/goals/{goal_id}", tags=["goals"])
-async def post_progress_goal(progress: float):
-    # Here we want to update the progress with given on or by given value
-    return
+async def post_progress_goal(progress: float, goal_id: int): 
+    list_of_goals[goal_id].progress += progress
+    return {"New progress of {}. goal".format(goal_id), "{}".format(list_of_goals[goal_id].progress)}
