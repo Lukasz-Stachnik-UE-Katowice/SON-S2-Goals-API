@@ -1,5 +1,5 @@
 from uuid import UUID
-from fastapi import APIRouter
+from fastapi import APIRouter, HTTPException
 from .klasa_goals import Goals
 
 router = APIRouter()
@@ -13,9 +13,12 @@ async def get_goals() -> list[Goals]:
 
 
 @router.get("/goals/{goal_id}", tags=["goals"])
-async def get_goal(goals_id: UUID):
+async def get_goal(goals_id: str):
     # Here we want to return goal that user whant's to see the details of
-    return []
+    for goal in goals:
+        if goal.id == goals_id:
+            return [goal]
+    raise HTTPException(status_code=404, detail="Item not found")
 
 
 @router.get("/goals/{username}", tags=["goals"])
