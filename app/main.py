@@ -1,6 +1,5 @@
 from fastapi import FastAPI
 from .routers import goals
-from pydantic import BaseModel
 
 app = FastAPI()
 
