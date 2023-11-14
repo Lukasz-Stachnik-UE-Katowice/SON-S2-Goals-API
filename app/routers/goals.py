@@ -42,6 +42,7 @@ async def delete_goal(goal_id: UUID):
     # Here we want to delete goal from the database, and return status
     for goal in list
         if goal.id == goal_id:
+            goal.delete
             return '200'
     return '404'
 
